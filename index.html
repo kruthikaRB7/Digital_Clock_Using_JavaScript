@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Digital Clock</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .clock {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(15px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      padding: 40px 80px;
+      border-radius: 20px;
+      color: #fff;
+      font-size: 64px;
+      letter-spacing: 3px;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="clock" id="clock">00:00:00</div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      let hrs = now.getHours();
+      let mins = now.getMinutes();
+      let secs = now.getSeconds();
+
+      hrs = hrs < 10 ? '0' + hrs : hrs;
+      mins = mins < 10 ? '0' + mins : mins;
+      secs = secs < 10 ? '0' + secs : secs;
+
+      const time = `${hrs}:${mins}:${secs}`;
+      document.getElementById('clock').textContent = time;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+
+</body>
+</html>
